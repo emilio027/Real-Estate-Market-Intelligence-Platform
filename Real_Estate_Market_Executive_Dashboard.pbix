@@ -1,0 +1,464 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Real Estate Market Intelligence Executive Dashboard",
+    "description": "Comprehensive Power BI dashboard for real estate market analysis, investment intelligence, and portfolio optimization",
+    "author": "Emilio Cardenas",
+    "created_date": "2025-08-18",
+    "data_sources": ["MLS Data", "Market Analytics APIs", "Economic Indicators", "Property Valuations", "Demographic Data"],
+    "refresh_schedule": "Daily 5:00 AM EST",
+    "target_audience": "Real Estate Investors, Portfolio Managers, Market Analysts"
+  },
+  "pages": [
+    {
+      "name": "Executive Overview",
+      "layout": "executive_summary",
+      "visuals": [
+        {
+          "type": "card",
+          "title": "Total Portfolio Value",
+          "measure": "SUM(Property_Values)",
+          "format": "$#,##0,,.0M",
+          "position": {"x": 0, "y": 0, "width": 2, "height": 1}
+        },
+        {
+          "type": "card", 
+          "title": "Average Cap Rate",
+          "measure": "AVERAGE(Cap_Rate)",
+          "format": "0.00%",
+          "position": {"x": 2, "y": 0, "width": 2, "height": 1}
+        },
+        {
+          "type": "card",
+          "title": "Portfolio IRR",
+          "measure": "CALCULATE_IRR(Cash_Flows)",
+          "format": "0.00%", 
+          "position": {"x": 4, "y": 0, "width": 2, "height": 1}
+        },
+        {
+          "type": "card",
+          "title": "Properties Under Management",
+          "measure": "COUNT(Property_ID)",
+          "format": "#,##0",
+          "position": {"x": 6, "y": 0, "width": 2, "height": 1}
+        },
+        {
+          "type": "line_chart",
+          "title": "Market Value Trends",
+          "x_axis": "Date",
+          "y_axis": ["Property_Values", "Market_Index"],
+          "series": ["Portfolio", "Market_Average", "S&P_500_REIT"],
+          "position": {"x": 0, "y": 1, "width": 4, "height": 3}
+        },
+        {
+          "type": "geographic_map",
+          "title": "Portfolio Geographic Distribution", 
+          "geography": "Property_Location",
+          "values": "Property_Value",
+          "color_scale": "Property_Performance",
+          "position": {"x": 4, "y": 1, "width": 4, "height": 3}
+        },
+        {
+          "type": "waterfall_chart",
+          "title": "Cash Flow Analysis",
+          "categories": ["Rental_Income", "Property_Appreciation", "Operating_Expenses", "Financing_Costs", "Tax_Benefits"],
+          "values": "Cash_Flow_Amount",
+          "position": {"x": 0, "y": 4, "width": 4, "height": 2}
+        },
+        {
+          "type": "gauge_chart",
+          "title": "Portfolio Health Score",
+          "value": "Portfolio_Health_Index",
+          "target": "Target_Health_Score",
+          "min": 0,
+          "max": 100,
+          "position": {"x": 4, "y": 4, "width": 2, "height": 2}
+        },
+        {
+          "type": "funnel_chart",
+          "title": "Investment Pipeline",
+          "categories": ["Prospecting", "Due_Diligence", "Under_Contract", "Closed", "Operational"],
+          "values": "Pipeline_Value",
+          "position": {"x": 6, "y": 4, "width": 2, "height": 2}
+        }
+      ]
+    },
+    {
+      "name": "Market Analytics",
+      "layout": "market_intelligence",
+      "visuals": [
+        {
+          "type": "combo_chart",
+          "title": "Price vs. Volume Analysis",
+          "x_axis": "Time_Period",
+          "y1_axis": "Median_Price",
+          "y2_axis": "Sales_Volume",
+          "position": {"x": 0, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "scatter_plot",
+          "title": "Price per Sq Ft vs. Days on Market",
+          "x_axis": "Days_On_Market",
+          "y_axis": "Price_Per_SqFt",
+          "size": "Property_Size",
+          "color": "Property_Type",
+          "position": {"x": 4, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "heatmap",
+          "title": "Market Performance by Region and Property Type",
+          "x_axis": "Geographic_Region",
+          "y_axis": "Property_Type",
+          "values": "ROI_Percentage",
+          "position": {"x": 0, "y": 3, "width": 4, "height": 3}
+        },
+        {
+          "type": "bubble_chart",
+          "title": "Market Opportunity Matrix",
+          "x_axis": "Market_Growth_Rate",
+          "y_axis": "Average_Cap_Rate",
+          "size": "Market_Size",
+          "color": "Investment_Risk_Level",
+          "position": {"x": 4, "y": 3, "width": 4, "height": 3}
+        }
+      ]
+    },
+    {
+      "name": "Property Performance",
+      "layout": "property_analytics",
+      "visuals": [
+        {
+          "type": "bar_chart",
+          "title": "Top 20 Performing Properties by ROI",
+          "x_axis": "Property_Name",
+          "y_axis": "ROI_Percentage",
+          "color": "Property_Type",
+          "position": {"x": 0, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "tree_map",
+          "title": "Portfolio Allocation by Property Type",
+          "category": "Property_Type",
+          "values": "Investment_Amount",
+          "color": "Performance_Tier",
+          "position": {"x": 4, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "box_plot",
+          "title": "Cap Rate Distribution by Property Type",
+          "x_axis": "Property_Type",
+          "y_axis": "Cap_Rate",
+          "position": {"x": 0, "y": 3, "width": 4, "height": 3}
+        },
+        {
+          "type": "table",
+          "title": "Property Performance Dashboard",
+          "columns": [
+            "Property_Address",
+            "Purchase_Price",
+            "Current_Value", 
+            "Cap_Rate",
+            "Cash_on_Cash_Return",
+            "Total_Return"
+          ],
+          "sort_by": "Total_Return",
+          "position": {"x": 4, "y": 3, "width": 4, "height": 3}
+        }
+      ]
+    },
+    {
+      "name": "Financial Analysis", 
+      "layout": "financial_dashboard",
+      "visuals": [
+        {
+          "type": "waterfall_chart",
+          "title": "Monthly Cash Flow Breakdown",
+          "categories": ["Gross_Rent", "Vacancy", "Operating_Expenses", "Debt_Service", "Net_Cash_Flow"],
+          "values": "Monthly_Amount",
+          "position": {"x": 0, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "stacked_area_chart",
+          "title": "Revenue Composition Over Time", 
+          "x_axis": "Month_Year",
+          "y_axis": "Revenue_Amount",
+          "series": ["Rental_Income", "Parking_Revenue", "Laundry_Income", "Other_Revenue"],
+          "position": {"x": 4, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "line_chart",
+          "title": "Debt Service Coverage Ratio Trend",
+          "x_axis": "Quarter",
+          "y_axis": "DSCR_Ratio",
+          "benchmark_line": 1.25,
+          "position": {"x": 0, "y": 3, "width": 4, "height": 3}
+        },
+        {
+          "type": "donut_chart",
+          "title": "Operating Expense Allocation",
+          "category": "Expense_Category",
+          "values": "Expense_Amount",
+          "position": {"x": 4, "y": 3, "width": 2, "height": 3}
+        },
+        {
+          "type": "gauge_chart",
+          "title": "Loan-to-Value Ratio",
+          "value": "Current_LTV",
+          "target": "Target_LTV",
+          "min": 0,
+          "max": 100,
+          "position": {"x": 6, "y": 3, "width": 2, "height": 3}
+        }
+      ]
+    },
+    {
+      "name": "Risk Management",
+      "layout": "risk_analytics",
+      "visuals": [
+        {
+          "type": "tornado_chart",
+          "title": "Sensitivity Analysis - Key Risk Factors",
+          "categories": ["Interest_Rate_Change", "Vacancy_Rate", "Market_Appreciation", "Operating_Expense_Inflation"],
+          "values": ["Downside_Impact", "Upside_Impact"],
+          "position": {"x": 0, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "scatter_plot",
+          "title": "Risk-Return Profile by Property",
+          "x_axis": "Risk_Score",
+          "y_axis": "Expected_Return",
+          "size": "Investment_Amount",
+          "color": "Property_Type",
+          "position": {"x": 4, "y": 0, "width": 4, "height": 3}
+        },
+        {
+          "type": "histogram", 
+          "title": "Portfolio Return Distribution",
+          "x_axis": "Return_Percentage",
+          "y_axis": "Frequency",
+          "overlay": "Normal_Distribution",
+          "position": {"x": 0, "y": 3, "width": 4, "height": 3}
+        },
+        {
+          "type": "matrix_chart",
+          "title": "Correlation Matrix - Risk Factors",
+          "rows": ["Interest_Rates", "Employment", "GDP_Growth", "Demographics"],
+          "columns": ["Interest_Rates", "Employment", "GDP_Growth", "Demographics"],
+          "values": "Correlation_Coefficient",
+          "position": {"x": 4, "y": 3, "width": 4, "height": 3}
+        }
+      ]
+    },
+    {
+      "name": "Market Intelligence",
+      "layout": "competitive_intelligence", 
+      "visuals": [
+        {
+          "type": "map_visualization",
+          "title": "Competitive Market Analysis",
+          "geography": "Submarket",
+          "values": "Competition_Density",
+          "color_scale": "Market_Attractiveness",
+          "position": {"x": 0, "y": 0, "width": 6, "height": 4}
+        },
+        {
+          "type": "radar_chart",
+          "title": "Market Attractiveness Scorecard",
+          "metrics": ["Price_Growth", "Rental_Yield", "Liquidity", "Supply_Demand", "Economic_Growth"],
+          "series": ["Target_Market", "Benchmark_Market"],
+          "position": {"x": 6, "y": 0, "width": 2, "height": 4}
+        },
+        {
+          "type": "column_chart",
+          "title": "New Supply vs. Demand by Submarket",
+          "x_axis": "Submarket",
+          "y_axis": ["New_Supply", "Net_Absorption"],
+          "position": {"x": 0, "y": 4, "width": 4, "height": 2}
+        },
+        {
+          "type": "line_chart",
+          "title": "Cap Rate Trends by Property Class",
+          "x_axis": "Quarter",
+          "y_axis": "Cap_Rate", 
+          "series": ["Class_A", "Class_B", "Class_C"],
+          "position": {"x": 4, "y": 4, "width": 4, "height": 2}
+        }
+      ]
+    },
+    {
+      "name": "ESG & Sustainability",
+      "layout": "sustainability_dashboard",
+      "visuals": [
+        {
+          "type": "scorecard",
+          "title": "ESG Performance Metrics",
+          "metrics": [
+            {"name": "Energy_Efficiency_Score", "value": "ESG_Energy", "format": "0"},
+            {"name": "Water_Usage_Efficiency", "value": "ESG_Water", "format": "0.0%"}, 
+            {"name": "Waste_Reduction", "value": "ESG_Waste", "format": "0.0%"},
+            {"name": "Tenant_Satisfaction", "value": "ESG_Social", "format": "0.0"}
+          ],
+          "position": {"x": 0, "y": 0, "width": 8, "height": 2}
+        },
+        {
+          "type": "column_chart",
+          "title": "Energy Consumption Trends",
+          "x_axis": "Month", 
+          "y_axis": "Energy_Usage_kWh",
+          "series": ["Actual", "Benchmark", "Target"],
+          "position": {"x": 0, "y": 2, "width": 4, "height": 3}
+        },
+        {
+          "type": "bar_chart",
+          "title": "Green Building Certifications by Property",
+          "x_axis": "Property_Name",
+          "y_axis": "Certification_Level",
+          "color": "Certification_Type",
+          "position": {"x": 4, "y": 2, "width": 4, "height": 3}
+        },
+        {
+          "type": "trend_chart",
+          "title": "Sustainability Investment ROI",
+          "x_axis": "Investment_Year",
+          "y_axis": "Sustainability_ROI",
+          "position": {"x": 0, "y": 5, "width": 8, "height": 2}
+        }
+      ]
+    }
+  ],
+  "data_model": {
+    "tables": [
+      {
+        "name": "Properties",
+        "columns": [
+          {"name": "Property_ID", "type": "Text", "key": true},
+          {"name": "Property_Address", "type": "Text"},
+          {"name": "Property_Type", "type": "Text"},
+          {"name": "Square_Footage", "type": "Whole Number"},
+          {"name": "Year_Built", "type": "Whole Number"},
+          {"name": "Purchase_Price", "type": "Currency"},
+          {"name": "Purchase_Date", "type": "Date"},
+          {"name": "Current_Value", "type": "Currency"},
+          {"name": "Geographic_Region", "type": "Text"},
+          {"name": "Submarket", "type": "Text"}
+        ]
+      },
+      {
+        "name": "Financial_Performance",
+        "columns": [
+          {"name": "Performance_ID", "type": "Text", "key": true},
+          {"name": "Property_ID", "type": "Text", "foreign_key": "Properties.Property_ID"},
+          {"name": "Period_Date", "type": "Date"},
+          {"name": "Gross_Rent", "type": "Currency"},
+          {"name": "Operating_Expenses", "type": "Currency"},
+          {"name": "Net_Operating_Income", "type": "Currency"},
+          {"name": "Cap_Rate", "type": "Percentage"},
+          {"name": "Cash_on_Cash_Return", "type": "Percentage"},
+          {"name": "Total_Return", "type": "Percentage"}
+        ]
+      },
+      {
+        "name": "Market_Data",
+        "columns": [
+          {"name": "Market_ID", "type": "Text", "key": true},
+          {"name": "Geographic_Region", "type": "Text"},
+          {"name": "Property_Type", "type": "Text"},
+          {"name": "Period_Date", "type": "Date"},
+          {"name": "Median_Price", "type": "Currency"},
+          {"name": "Price_Per_SqFt", "type": "Currency"},
+          {"name": "Days_On_Market", "type": "Whole Number"},
+          {"name": "Sales_Volume", "type": "Whole Number"},
+          {"name": "Market_Cap_Rate", "type": "Percentage"},
+          {"name": "Vacancy_Rate", "type": "Percentage"}
+        ]
+      },
+      {
+        "name": "Economic_Indicators",
+        "columns": [
+          {"name": "Indicator_ID", "type": "Text", "key": true},
+          {"name": "Geographic_Region", "type": "Text"},
+          {"name": "Period_Date", "type": "Date"},
+          {"name": "Interest_Rate", "type": "Percentage"},
+          {"name": "Employment_Rate", "type": "Percentage"},
+          {"name": "GDP_Growth", "type": "Percentage"},
+          {"name": "Population_Growth", "type": "Percentage"},
+          {"name": "Household_Income_Median", "type": "Currency"}
+        ]
+      },
+      {
+        "name": "ESG_Metrics",
+        "columns": [
+          {"name": "ESG_ID", "type": "Text", "key": true},
+          {"name": "Property_ID", "type": "Text", "foreign_key": "Properties.Property_ID"},
+          {"name": "Period_Date", "type": "Date"},
+          {"name": "Energy_Usage", "type": "Decimal"},
+          {"name": "Water_Usage", "type": "Decimal"},
+          {"name": "Waste_Generated", "type": "Decimal"},
+          {"name": "Carbon_Footprint", "type": "Decimal"},
+          {"name": "Green_Certification", "type": "Text"},
+          {"name": "Tenant_Satisfaction_Score", "type": "Decimal"}
+        ]
+      }
+    ],
+    "measures": [
+      {
+        "name": "Total_Portfolio_Value",
+        "formula": "SUM(Properties[Current_Value])",
+        "format": "$#,##0,,.0M"
+      },
+      {
+        "name": "Portfolio_IRR",
+        "formula": "IRR(Financial_Performance[Net_Cash_Flow])",
+        "format": "0.00%"
+      },
+      {
+        "name": "Average_Cap_Rate",
+        "formula": "AVERAGE(Financial_Performance[Cap_Rate])",
+        "format": "0.00%"
+      },
+      {
+        "name": "Portfolio_Health_Index",
+        "formula": "AVERAGE([Occupancy_Rate] * 0.3 + [Debt_Service_Coverage] * 0.3 + [Market_Performance] * 0.4)",
+        "format": "0.0"
+      },
+      {
+        "name": "Risk_Adjusted_Return", 
+        "formula": "DIVIDE([Portfolio_Return], [Portfolio_Volatility])",
+        "format": "0.00"
+      },
+      {
+        "name": "Market_Outperformance",
+        "formula": "[Portfolio_Return] - [Market_Benchmark_Return]",
+        "format": "+0.00%;-0.00%"
+      }
+    ]
+  },
+  "filters": [
+    {"field": "Period_Date", "type": "date_range", "default": "Last_24_Months"},
+    {"field": "Property_Type", "type": "multi_select", "default": "All"},
+    {"field": "Geographic_Region", "type": "multi_select", "default": "All"},
+    {"field": "Property_Performance_Tier", "type": "single_select", "default": "All"}
+  ],
+  "refresh_settings": {
+    "auto_refresh": true,
+    "refresh_interval": "6_hours",
+    "data_sources": [
+      {"name": "MLS_Data", "refresh_type": "incremental"},
+      {"name": "Market_Analytics", "refresh_type": "full"},
+      {"name": "Economic_Indicators", "refresh_type": "daily"},
+      {"name": "Property_Financials", "refresh_type": "weekly"}
+    ]
+  },
+  "security": {
+    "row_level_security": true,
+    "user_roles": ["Executive", "Portfolio_Manager", "Analyst", "Property_Manager"],
+    "data_classification": "Confidential",
+    "regional_access_control": true
+  },
+  "alerts": [
+    {"condition": "Cap_Rate < 4%", "action": "Email_Alert", "recipients": ["Portfolio_Managers"]},
+    {"condition": "Vacancy_Rate > 15%", "action": "Dashboard_Alert", "priority": "High"},
+    {"condition": "DSCR < 1.2", "action": "System_Notification", "priority": "Critical"},
+    {"condition": "Market_Value_Change > 20%", "action": "Email_Report", "frequency": "Weekly"}
+  ]
+}
