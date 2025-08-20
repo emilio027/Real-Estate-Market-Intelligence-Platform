@@ -55,12 +55,20 @@
 
 ## 🏢 **Live Platform Demonstrations**
 
-> **🚀 ONE-CLICK INTERACTIVE DEMO:**  
-> **[► LAUNCH LIVE DEMO](https://emilio027.github.io/Real-Estate-Market-Intelligence-Platform/interactive_demo.html)** ← *Click to run immediately*
+> **🚀 EXECUTIVE-READY INTERACTIVE DEMOS:**  
 > 
-> ✅ **Works on all devices** - Mobile, tablet, desktop  
-> ✅ **Full features preserved** - All visualizations, filters, UI options  
-> ✅ **No downloads required** - Runs instantly in your browser
+> **Option 1 - Instant Preview** *(Recommended for C-Suite)*  
+> **[► LAUNCH LIVE DEMO](https://htmlpreview.github.io/?https://github.com/emilio027/Real-Estate-Market-Intelligence-Platform/blob/master/interactive_demo.html)** ← *One-click access*
+> 
+> **Option 2 - Direct Access** *(Technical Teams)*  
+> **[► DOWNLOAD & OPEN](https://github.com/emilio027/Real-Estate-Market-Intelligence-Platform/blob/master/interactive_demo.html)** → *Right-click → Save → Open in browser*
+> 
+> **Option 3 - RAW Preview** *(Alternative Method)*  
+> **[► VIEW SOURCE](https://raw.githubusercontent.com/emilio027/Real-Estate-Market-Intelligence-Platform/master/interactive_demo.html)** → *Save As → .html → Open*
+> 
+> ✅ **Executive Compatibility** - Works on all devices, browsers, networks  
+> ✅ **Full Feature Preservation** - All visualizations, filters, analytics intact  
+> ✅ **Zero Technical Barriers** - Multiple access methods for all stakeholders
 
 <div align="center">
   <table>
@@ -266,7 +274,7 @@ docker-compose up -d
 ### 🚀 **Quick Access**
 | Resource | Description | Link |
 |----------|-------------|------|
-| 🏢 **Live Demo** | Interactive real estate demonstration | [► LAUNCH DEMO](https://emilio027.github.io/Real-Estate-Market-Intelligence-Platform/interactive_demo.html) |
+| 🏢 **Live Demo** | Interactive real estate demonstration | [► LAUNCH DEMO](https://htmlpreview.github.io/?https://github.com/emilio027/Real-Estate-Market-Intelligence-Platform/blob/master/interactive_demo.html) |
 | 📋 **Business Case** | ROI analysis and value proposition | [ROI Analysis](Business_Impact/ROI_Analysis.md) |
 | 🚀 **Quick Start** | Get running in 5 minutes | [Installation Guide](Quick_Start/Installation_Guide.md) |
 | 🔧 **Technical Docs** | Developer documentation | [Technical/Documentation/](Technical/Documentation/) |
