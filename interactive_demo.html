@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Market Intelligence Platform - Interactive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .demo-card h3 {
+            color: #2E86AB;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .demo-card .icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric {
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .interactive-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #f0f2f5, #e1e8ed);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder {
+            text-align: center;
+            color: #666;
+        }
+
+        .property-map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #2E86AB20, #A23B7220);
+            border-radius: 10px;
+        }
+
+        .map-pin {
+            position: absolute;
+            background: #2E86AB;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pin1 { top: 20%; left: 15%; }
+        .pin2 { top: 30%; left: 60%; }
+        .pin3 { top: 60%; left: 25%; }
+        .pin4 { top: 70%; left: 75%; }
+        .pin5 { top: 45%; left: 45%; }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 134, 171, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .property-card {
+            background: linear-gradient(45deg, #2E86AB10, #A23B7210);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #2E86AB;
+        }
+
+        .property-value {
+            display: inline-block;
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .market-trend {
+            background: linear-gradient(45deg, #2E86AB20, #A23B7220);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 Real Estate Market Intelligence</h1>
+            <p>Interactive Platform Demonstration</p>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-card" onclick="openModal('propertyModal')">
+                <h3><span class="icon">🏠</span>Property Valuation Engine</h3>
+                <p>AI-powered property valuation with 92% accuracy across residential, commercial, and industrial properties.</p>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value">92%</div>
+                        <div class="metric-label">Valuation Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$250M</div>
+                        <div class="metric-label">Portfolio AUM</div>
+                    </div>
+                </div>
+                <button class="btn">Explore Property Analytics</button>
+            </div>
+
+            <div class="demo-card" onclick="openModal('marketModal')">
+                <h3><span class="icon">📊</span>Market Analysis & Forecasting</h3>
+                <p>Price appreciation forecasting with 87% accuracy and comprehensive market trend analysis.</p>
+                <div class="chart-container">
+                    <div class="property-map">
+                        <div class="map-pin pin1">🏠</div>
+                        <div class="map-pin pin2">🏢</div>
+                        <div class="map-pin pin3">🏭</div>
+                        <div class="map-pin pin4">🏘️</div>
+                        <div class="map-pin pin5">🏦</div>
+                    </div>
+                    <div class="chart-placeholder">Interactive Market Heat Map</div>
+                </div>
+                <button class="btn">View Market Intelligence</button>
+            </div>
+
+            <div class="demo-card" onclick="openModal('investmentModal')">
+                <h3><span class="icon">💰</span>Investment Optimizer</h3>
+                <p>Portfolio optimization with 19% annual returns and risk-adjusted return calculations.</p>
+                <div class="market-trend">
+                    <strong>Investment Performance:</strong><br>
+                    <span class="property-value">Annual Returns: 19%</span>
+                    <span class="property-value">Sharpe Ratio: 1.34</span>
+                </div>
+                <button class="btn">Optimize Investments</button>
+            </div>
+
+            <div class="demo-card" onclick="openModal('geographicModal')">
+                <h3><span class="icon">🗺️</span>Geographic Intelligence</h3>
+                <p>Neighborhood scoring, school district analysis, and demographic trends across 150+ metropolitan markets.</p>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value">150+</div>
+                        <div class="metric-label">Metro Markets</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">96%</div>
+                        <div class="metric-label">Occupancy Rate</div>
+                    </div>
+                </div>
+                <button class="btn">Explore Geographic Data</button>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h2>🚀 Key Performance Indicators</h2>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">350%</div>
+                    <div class="metric-label">Technology ROI</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">65%</div>
+                    <div class="metric-label">Faster Analysis</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$22M</div>
+                    <div class="metric-label">Annual Savings</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">7 days</div>
+                    <div class="metric-label">Decision Speed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Property Valuation Modal -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🏠 Property Valuation Engine</h2>
+            <p><strong>AI-Powered Accuracy:</strong> 92% accuracy in property valuations within 5% of actual sales across all property types.</p>
+            
+            <h3>Valuation Capabilities:</h3>
+            <ul class="feature-list">
+                <li><span class="feature-icon">🏠</span><strong>Single-Family Homes:</strong> 92% accuracy with comps analysis</li>
+                <li><span class="feature-icon">🏢</span><strong>Multi-Family Properties:</strong> 89% accuracy for rental income properties</li>
+                <li><span class="feature-icon">🏭</span><strong>Commercial Real Estate:</strong> 87% accuracy for office and retail</li>
+                <li><span class="feature-icon">🏘️</span><strong>Industrial Properties:</strong> 85% accuracy for warehouses</li>
+                <li><span class="feature-icon">🏞️</span><strong>Land Valuation:</strong> 91% accuracy for development opportunities</li>
+            </ul>
+
+            <div class="property-card">
+                <strong>Sample Property Analysis:</strong><br>
+                <span class="property-value">123 Main St: $485K</span>
+                <span class="property-value">Confidence: 94%</span><br>
+                <span class="property-value">Cap Rate: 6.2%</span>
+                <span class="property-value">ROI Forecast: 12%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market Analysis Modal -->
+    <div id="marketModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>📊 Market Analysis & Forecasting</h2>
+            <p><strong>Predictive Intelligence:</strong> 87% accuracy in price appreciation forecasting with comprehensive market cycle analysis.</p>
+            
+            <h3>Market Analysis Features:</h3>
+            <ul class="feature-list">
+                <li><span class="feature-icon">📈</span><strong>Price Appreciation:</strong> 87% accuracy for 12-month forecasts</li>
+                <li><span class="feature-icon">🏠</span><strong>Rental Rate Forecasts:</strong> 84% accuracy for market rates</li>
+                <li><span class="feature-icon">🔄</span><strong>Market Cycle Timing:</strong> 89% accuracy for peaks and troughs</li>
+                <li><span class="feature-icon">🏘️</span><strong>Neighborhood Trends:</strong> 92% accuracy for gentrification</li>
+                <li><span class="feature-icon">💰</span><strong>Economic Impact:</strong> 86% accuracy for interest rate effects</li>
+            </ul>
+
+            <div class="market-trend">
+                <strong>Current Market Trends:</strong><br>
+                Austin, TX: +8.2% appreciation forecast (High Confidence)<br>
+                Denver, CO: +6.5% appreciation forecast (Medium Confidence)<br>
+                Nashville, TN: +7.8% appreciation forecast (High Confidence)<br>
+                Charlotte, NC: +5.9% appreciation forecast (Medium Confidence)
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Optimizer Modal -->
+    <div id="investmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>💰 Investment Optimizer</h2>
+            <p><strong>Portfolio Performance:</strong> 19% annual returns with sophisticated risk-adjusted optimization algorithms.</p>
+            
+            <h3>Investment Strategies:</h3>
+            <ul class="feature-list">
+                <li><span class="feature-icon">🌍</span><strong>Geographic Diversification:</strong> Multi-market exposure optimization</li>
+                <li><span class="feature-icon">🏢</span><strong>Property Type Allocation:</strong> Residential, commercial, industrial mix</li>
+                <li><span class="feature-icon">⚖️</span><strong>Risk-Return Optimization:</strong> Modern portfolio theory application</li>
+                <li><span class="feature-icon">💸</span><strong>Cash Flow Analysis:</strong> Income vs appreciation strategies</li>
+                <li><span class="feature-icon">🏗️</span><strong>Development Opportunities:</strong> New construction vs stabilized assets</li>
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">19.3%</div>
+                    <div class="metric-label">Annual Returns</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">1.34</div>
+                    <div class="metric-label">Sharpe Ratio</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">78%</div>
+                    <div class="metric-label">Success Rate</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">4.2mo</div>
+                    <div class="metric-label">Time to Liquidity</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Geographic Intelligence Modal -->
+    <div id="geographicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🗺️ Geographic Intelligence</h2>
+            <p><strong>Location Analytics:</strong> Comprehensive neighborhood scoring and demographic analysis across 150+ metropolitan markets.</p>
+            
+            <h3>Geographic Analysis:</h3>
+            <ul class="feature-list">
+                <li><span class="feature-icon">🏘️</span><strong>Neighborhood Scoring:</strong> Walkability, amenities, lifestyle factors</li>
+                <li><span class="feature-icon">🎓</span><strong>School District Analysis:</strong> Quality impact on property values</li>
+                <li><span class="feature-icon">🛡️</span><strong>Safety Analysis:</strong> Crime statistics and safety scores</li>
+                <li><span class="feature-icon">🚊</span><strong>Transportation Access:</strong> Infrastructure and connectivity impact</li>
+                <li><span class="feature-icon">🏗️</span><strong>Development Opportunities:</strong> Zoning and future growth potential</li>
+            </ul>
+
+            <div class="property-card">
+                <strong>Sample Neighborhood Analysis:</strong><br>
+                <span class="property-value">Downtown Austin: Score 94</span><br>
+                <span class="property-value">School Rating: 9/10</span>
+                <span class="property-value">Safety Score: 8.5/10</span><br>
+                <span class="property-value">Walkability: 89</span>
+                <span class="property-value">Transit Score: 85</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        // Close modals when clicking the close button or outside the modal
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => modal.style.display = 'none');
+            }
+        });
+
+        // Animate metrics on scroll
+        function animateMetrics() {
+            const metrics = document.querySelectorAll('.metric-value');
+            metrics.forEach(metric => {
+                const finalValue = metric.textContent;
+                const numericValue = parseInt(finalValue.replace(/\D/g, ''));
+                if (numericValue) {
+                    let currentValue = 0;
+                    const increment = numericValue / 50;
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= numericValue) {
+                            metric.textContent = finalValue;
+                            clearInterval(timer);
+                        } else {
+                            metric.textContent = Math.floor(currentValue) + finalValue.replace(/\d/g, '').substring(0, 1);
+                        }
+                    }, 40);
+                }
+            });
+        }
+
+        // Start animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateMetrics, 500);
+        });
+    </script>
+</body>
+</html>
