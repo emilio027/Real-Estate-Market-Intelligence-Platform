@@ -1,4 +1,4 @@
-# 🏢 Real Estate Market Intelligence Platform
+# ▲ Real Estate Market Intelligence Platform
 
 <div align="center">
   <img src="https://img.shields.io/badge/Annual%20Returns-19%25-green?style=for-the-badge&logo=trending-up&logoColor=white" alt="Returns">
@@ -8,42 +8,42 @@
 </div>
 
 <div align="center">
-  <h3>🚀 AI-Powered Real Estate Investment Intelligence</h3>
+  <h3>◆ AI-Powered Real Estate Investment Intelligence</h3>
   <p><em>Professional-grade property analytics delivering superior real estate investment returns</em></p>
 </div>
 
 ---
 
-## 🎯 Executive Summary
+## ◉ Executive Summary
 
-**🏆 Business Impact**: Comprehensive real estate investment intelligence platform delivering **19% annual returns** through AI-powered property valuation, market analysis, and investment optimization managing **$250M+** in real estate assets across residential, commercial, and industrial sectors with **92% valuation accuracy**.
+**◇ Business Impact**: Comprehensive real estate investment intelligence platform delivering **19% annual returns** through AI-powered property valuation, market analysis, and investment optimization managing **$250M+** in real estate assets across residential, commercial, and industrial sectors with **92% valuation accuracy**.
 
 <div align="center">
   <table>
     <tr>
-      <td align="center"><strong>🏢 Portfolio AUM</strong><br/>$250M+</td>
-      <td align="center"><strong>📈 Annual Returns</strong><br/>19%</td>
-      <td align="center"><strong>🎯 Valuation Accuracy</strong><br/>92%</td>
-      <td align="center"><strong>💰 Annual Savings</strong><br/>$22M</td>
+      <td align="center"><strong>▲ Portfolio AUM</strong><br/>$250M+</td>
+      <td align="center"><strong>▬ Annual Returns</strong><br/>19%</td>
+      <td align="center"><strong>◉ Valuation Accuracy</strong><br/>92%</td>
+      <td align="center"><strong>● Annual Savings</strong><br/>$22M</td>
     </tr>
   </table>
 </div>
 
-### 🚀 **Key Value Propositions**:
-- 🏢 **19% Annual Returns** on real estate investments (vs 11% market average)
-- 🎯 **92% Valuation Accuracy** in property models (within 5% of actual sales)
-- ⚡ **65% Faster Analysis** (3 days vs 8.5 days industry standard)
-- 💰 **$22M Annual Savings** through optimized acquisition timing and pricing
+### ◆ **Key Value Propositions**:
+- ▲ **19% Annual Returns** on real estate investments (vs 11% market average)
+- ◉ **92% Valuation Accuracy** in property models (within 5% of actual sales)
+- ◈ **65% Faster Analysis** (3 days vs 8.5 days industry standard)
+- ● **$22M Annual Savings** through optimized acquisition timing and pricing
 - 🌍 **Real-Time Intelligence** across 150+ metropolitan markets
 - 🧠 **AI-Powered Insights** for property valuation and market analysis
 
-## 📊 Business Metrics & ROI
+## ▪ Business Metrics & ROI
 
 <div align="center">
   
-| 📈 **Metric** | 📉 **Market Avg** | ✅ **Our Platform** | 🚀 **Outperformance** |
+| ▬ **Metric** | ▬ **Market Avg** | ✓ **Our Platform** | ◆ **Outperformance** |
 |--------|-----------|---------|-------------|
-| **Annual Returns** | 11% | **19%** | 🏢 **+73%** |
+| **Annual Returns** | 11% | **19%** | ▲ **+73%** |
 | **Valuation Accuracy** | 78% | **92%** | 🎯 **+18%** |
 | **Analysis Time** | 8.5 days | **3 days** | ⚡ **-65%** |
 | **Cost Optimization** | 0% | **12%** | 💰 **$22M Savings** |

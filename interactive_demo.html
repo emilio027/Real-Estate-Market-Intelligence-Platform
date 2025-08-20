@@ -26,11 +26,20 @@
             --color-gray-800: #424242;
             --color-gray-900: #212121;
             
-            /* Strategic Accent Colors */
-            --color-accent-primary: #FF3B30;
-            --color-accent-blue: #007AFF;
-            --color-accent-green: #34C759;
-            --color-accent-orange: #FF9500;
+            /* Strategic Accent Colors - Enhanced */
+            --color-accent-primary: #E53E3E;
+            --color-accent-blue: #3182CE;
+            --color-accent-green: #38A169;
+            --color-accent-orange: #ED8936;
+            --color-accent-purple: #805AD5;
+            --color-accent-teal: #319795;
+            --color-accent-indigo: #5A67D8;
+            
+            /* Gradient Backgrounds */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #667eea 0%, #38A169 100%);
+            --gradient-chart: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-card: linear-gradient(135deg, #ffeef8 0%, #f8fafc 100%);
             
             /* Typography System */
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -308,22 +317,29 @@
         }
 
         .control-button {
-            background: var(--color-black);
+            background: var(--gradient-primary);
             border: none;
             border-radius: var(--radius-md);
-            padding: var(--spacing-3) var(--spacing-6);
+            padding: var(--spacing-4) var(--spacing-8);
             font-size: var(--text-sm);
             font-weight: var(--font-weight-semibold);
             color: var(--color-white);
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-transform: uppercase;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 14px rgba(102, 126, 234, 0.25);
+            position: relative;
+            overflow: hidden;
         }
 
         .control-button:hover {
-            background: var(--color-gray-800);
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+        }
+
+        .control-button:active {
+            transform: translateY(-1px) scale(1.02);
         }
 
         .control-button.heatmap-toggle {
@@ -389,17 +405,19 @@
         }
 
         .viz-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-gray-200);
+            background: var(--gradient-card);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--radius-xl);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-base);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(15px);
         }
 
         .viz-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .viz-header {
@@ -1416,12 +1434,12 @@
                 const { marketData, economicData } = await generateMarketDataWithEconomicFactors();
                 
                 // Generate comprehensive analysis based on selected filters
-                let analysisResults = `🏢 REAL-TIME MARKET ANALYSIS\n`;
-                analysisResults += `📍 Region: ${region}\n`;
-                analysisResults += `🏠 Property Type: ${propertyType}\n`;
-                analysisResults += `💰 Price Range: ${priceRange}\n\n`;
+                let analysisResults = `▲ REAL-TIME MARKET ANALYSIS\n`;
+                analysisResults += `◉ Region: ${region}\n`;
+                analysisResults += `▲ Property Type: ${propertyType}\n`;
+                analysisResults += `● Price Range: ${priceRange}\n\n`;
                 
-                analysisResults += `📊 ECONOMIC CONDITIONS:\n`;
+                analysisResults += `▪ ECONOMIC CONDITIONS:\n`;
                 analysisResults += `• Interest Rate: ${economicData.interestRate}%\n`;
                 analysisResults += `• Unemployment: ${economicData.unemploymentRate}%\n`;
                 analysisResults += `• Inflation: ${economicData.inflation}%\n\n`;
