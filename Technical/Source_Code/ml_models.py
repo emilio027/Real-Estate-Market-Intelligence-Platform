@@ -4,7 +4,7 @@ Real Estate Market Intelligence Platform - ML Models Module
 Advanced Machine Learning Models for Property Valuation and Market Analysis
 
 Author: Emilio Cardenas
-Institution: MIT PhD AI Automation | Harvard MBA
+Organization: Real Estate Market Intelligence Platform
 Version: 2.0.0 Enterprise
 License: Proprietary
 """
@@ -867,7 +867,7 @@ def main():
     print("=" * 80)
     print("Real Estate Market Intelligence Platform")
     print("Machine Learning Models Module")
-    print("Author: Emilio Cardenas | MIT PhD AI Automation | Harvard MBA")
+    print("Author: Emilio Cardenas | Principal Data Scientist")
     print("=" * 80)
     
     # Initialize ML Manager

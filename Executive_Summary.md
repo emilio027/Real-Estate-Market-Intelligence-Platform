@@ -78,7 +78,7 @@
 
 ## 📞 **Contact Information**
 
-**Emilio Cardenas** | MIT PhD AI Automation | Harvard MBA  
+**Emilio Cardenas** | Principal Data Scientist & Investment Analyst  
 📧 emilio.cardenas@realestate-ai.com | 📱 +1 (555) 123-4567
 
 ---
